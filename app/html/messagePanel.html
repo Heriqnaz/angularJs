@@ -1,0 +1,29 @@
+<div  layout="column" ng-cloak>
+  <md-toolbar class="md-warn" ng-controller="messageCtrl">
+    <div class="md-toolbar-tools d-flex flex-column">
+      <h2 class="md-flex">{{data.name}}</h2>
+      <h4>{{ data.email }}</h4>
+    </div>
+  </md-toolbar>
+
+  <md-content flex layout-padding ng-repeat="note in data.notes">
+    <p >{{ note}}</p>
+  </md-content>
+  <md-content layout-padding>
+    <form name="projectForm" ng-submit="sendMessage()">
+
+      <md-input-container class="md-block">
+        <label>Message</label>
+        <input md-maxlength="30" required md-no-asterisk name="message" ng-model="message">
+        <div ng-messages="projectForm.description.$error">
+          <div ng-message="required">This is required.</div>
+          <div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+        </div>
+      </md-input-container>
+
+      <button type="submit" class="btn btn-success float-right">Send</button>
+    </form>
+  </md-content>
+
+
+</div>
